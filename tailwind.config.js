@@ -3,6 +3,19 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
+      polar: {
+        50: "#f0f8fb",
+        100: "#e6f3f8",
+        200: "#c8e7ef",
+        300: "#98d3e1",
+        400: "#60bbd0",
+        500: "#3ca4bb",
+        600: "#2b869e",
+        700: "#246b80",
+        800: "#225a6a",
+        900: "#214c59",
+        950: "#16313b",
+      },
       sandrift: {
         50: "#f9f6f3",
         100: "#f1eae3",

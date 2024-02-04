@@ -9,13 +9,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-sandrift-700 hover:bg-sandrift-600 text-lola-50 [&>svg]:fill-lola-50 stroke-2",
+          "bg-sandrift-400 hover:bg-sandrift-300 [&>svg]:fill-white stroke-2 text-night",
         secundary:
-          "bg-amethyst-smoke-800 hover:bg-amethyst-smoke-600 text-lola-50 [&>svg]:fill-lola-50 stroke-2",
+          "bg-amethyst-smoke-800 text-polar-50 hover:bg-amethyst-smoke-900 [&>svg]:fill-white stroke-2 ",
         danger:
-          "bg-night-shadz-800 hover:bg-night-shadz-700 text-lola-50 [&>svg]:fill-lola-50 stroke-2",
+          "bg-night-shadz-700 text-polar-50 hover:bg-night-shadz-600 [&>svg]:fill-white stroke-2",
         ghost: "text-night hover:bg-lola-200",
-        link: "text-jaguar-900 hover:text-bold hover:underline [&>svg]:fill-jaguar-900 stroke-2",
+        link: "text-jaguar-900 hover:font-bold hover:underline [&>svg]:fill-jaguar-900 stroke-2",
       },
       size: {
         sm: "px-3 py-1 [&>svg]:h-[20px] [&>svg]:w-[20px] [&>svg]:pr-1 text-sm",
