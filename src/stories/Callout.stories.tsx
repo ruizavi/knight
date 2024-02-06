@@ -28,10 +28,10 @@ export const Info: Story = {
           </Callout.Icon>
           <Callout.Title>Information</Callout.Title>
         </Callout.Header>
-        <Callout.Content>
+        <Callout.Message>
           Neque porro quisquam est qui dolorem ipsum quia dolor sit
           amet,consectetur, adipisci velit...
-        </Callout.Content>
+        </Callout.Message>
       </>
     ),
   },
@@ -48,10 +48,10 @@ export const Success: Story = {
           </Callout.Icon>
           <Callout.Title>Success</Callout.Title>
         </Callout.Header>
-        <Callout.Content>
+        <Callout.Message>
           Neque porro quisquam est qui dolorem ipsum quia dolor sit
           amet,consectetur, adipisci velit...
-        </Callout.Content>
+        </Callout.Message>
       </>
     ),
   },
@@ -68,10 +68,10 @@ export const Warning: Story = {
           </Callout.Icon>
           <Callout.Title>Warning</Callout.Title>
         </Callout.Header>
-        <Callout.Content>
+        <Callout.Message>
           Neque porro quisquam est qui dolorem ipsum quia dolor sit
           amet,consectetur, adipisci velit...
-        </Callout.Content>
+        </Callout.Message>
       </>
     ),
   },
@@ -88,10 +88,10 @@ export const Error: Story = {
           </Callout.Icon>
           <Callout.Title>Error</Callout.Title>
         </Callout.Header>
-        <Callout.Content>
+        <Callout.Message>
           Neque porro quisquam est qui dolorem ipsum quia dolor sit
           amet,consectetur, adipisci velit...
-        </Callout.Content>
+        </Callout.Message>
       </>
     ),
   },
@@ -108,10 +108,10 @@ export const Themeless: Story = {
           </Callout.Icon>
           <Callout.Title>Themeless</Callout.Title>
         </Callout.Header>
-        <Callout.Content>
+        <Callout.Message>
           Neque porro quisquam est qui dolorem ipsum quia dolor sit
           amet,consectetur, adipisci velit...
-        </Callout.Content>
+        </Callout.Message>
       </>
     ),
   },

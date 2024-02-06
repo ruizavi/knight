@@ -48,10 +48,10 @@ const Header = React.forwardRef<HTMLHeadElement, CalloutHeaderProps>(
   }
 );
 
-interface CalloutContentProps
+interface CalloutMessageProps
   extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const Content = React.forwardRef<HTMLParagraphElement, CalloutContentProps>(
+const Content = React.forwardRef<HTMLParagraphElement, CalloutMessageProps>(
   (props, ref) => {
     const Component = "p";
 
