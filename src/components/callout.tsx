@@ -51,7 +51,7 @@ const Header = React.forwardRef<HTMLHeadElement, CalloutHeaderProps>(
 interface CalloutMessageProps
   extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const Content = React.forwardRef<HTMLParagraphElement, CalloutMessageProps>(
+const Message = React.forwardRef<HTMLParagraphElement, CalloutMessageProps>(
   (props, ref) => {
     const Component = "p";
 
@@ -84,7 +84,7 @@ interface CalloutComponent
   Header: typeof Header;
   Icon: typeof Icon;
   Title: typeof Title;
-  Content: typeof Content;
+  Message: typeof Message;
 }
 
 const Callout = {
@@ -92,7 +92,7 @@ const Callout = {
   Header,
   Title,
   Icon,
-  Content,
+  Message,
 } as CalloutComponent;
 
 export { Callout, calloutVariants };
