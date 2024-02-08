@@ -25,49 +25,91 @@ const cardVariants = cva("p-6 rounded-md", {
   },
 });
 
-interface CardHeaderProps extends Header, As<"header"> {}
-interface CardTitleProps extends Title, As<HeadingType> {}
-interface CardDescriptionProps extends Description, As<"p"> {}
-interface CardContentProps extends Content, As<"article"> {}
-interface CardFooterProps extends Footer, As<"footer"> {}
-
 interface CardProps
   extends React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof cardVariants>,
-    As<"section"> {}
+    As<"section">,
+    VariantProps<typeof cardVariants> {}
 
-const Header = React.forwardRef<HTMLHeadElement, CardHeaderProps>(
+const Card = React.forwardRef<HTMLElement, CardProps>(
+  ({ as, className, shadow, ...props }, ref) => {
+    const C = as ?? "section";
+
+    return (
+      <C
+        {...props}
+        className={cn(cardVariants({ shadow, className }))}
+        ref={ref}
+      />
+    );
+  }
+);
+
+Card.displayName = "Card";
+
+const cardHeaderVariants = cva("pb-2");
+
+interface CardHeaderProps extends Header, As<"header"> {}
+
+const CardHeader = React.forwardRef<HTMLHeadElement, CardHeaderProps>(
   ({ as, className, ...props }, ref) => {
     const Component = as || "header";
 
-    const style = `pb-2`;
-
-    return <Component ref={ref} className={cn(style, className)} {...props} />;
+    return (
+      <Component
+        ref={ref}
+        className={cn(cardHeaderVariants({ className }))}
+        {...props}
+      />
+    );
   }
 );
 
-const Title = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
+CardHeader.displayName = "Card.Header";
+
+const cardTitleVariants = cva("text-xl font-bold");
+
+interface CardTitleProps extends Title, As<HeadingType> {}
+
+const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
   ({ as, className, ...props }, ref) => {
     const Component = as || "h1";
 
-    const style = `text-xl font-bold`;
-
-    return <Component {...props} className={cn(style, className)} ref={ref} />;
+    return (
+      <Component
+        {...props}
+        className={cn(cardTitleVariants({ className }))}
+        ref={ref}
+      />
+    );
   }
 );
 
-const Description = React.forwardRef<
+CardTitle.displayName = "Card.Title";
+
+const cardDescriptionsVariants = cva("text-oxford text-sm font-light");
+
+interface CardDescriptionProps extends Description, As<"p"> {}
+
+const CardDescription = React.forwardRef<
   HTMLParagraphElement,
   CardDescriptionProps
 >(({ as, className, ...props }, ref) => {
   const Component = as || "p";
 
-  const style = `text-oxford text-sm font-light`;
-
-  return <Component {...props} className={cn(style, className)} ref={ref} />;
+  return (
+    <Component
+      {...props}
+      className={cn(cardDescriptionsVariants({ className }))}
+      ref={ref}
+    />
+  );
 });
 
-const Content = React.forwardRef<HTMLElement, CardContentProps>(
+CardDescription.displayName = "Card.Description";
+
+interface CardContentProps extends Content, As<"article"> {}
+
+const CardContent = React.forwardRef<HTMLElement, CardContentProps>(
   ({ as, ...props }, ref) => {
     const Component = as || "article";
 
@@ -75,7 +117,11 @@ const Content = React.forwardRef<HTMLElement, CardContentProps>(
   }
 );
 
-const Footer = React.forwardRef<HTMLElement, CardFooterProps>(
+CardContent.displayName = "Card.Content";
+
+interface CardFooterProps extends Footer, As<"footer"> {}
+
+const CardFooter = React.forwardRef<HTMLElement, CardFooterProps>(
   ({ as, ...props }, ref) => {
     const Component = as || "footer";
 
@@ -83,38 +129,14 @@ const Footer = React.forwardRef<HTMLElement, CardFooterProps>(
   }
 );
 
-const Base = React.forwardRef<HTMLElement, CardProps>(
-  ({ as, className, shadow, ...props }, ref) => {
-    const Component = as || "section";
+CardFooter.displayName = "Card.Footer";
 
-    return (
-      <Component
-        className={cn(cardVariants({ className, shadow }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
-
-interface CardComponent
-  extends React.ForwardRefExoticComponent<
-    CardProps & React.RefAttributes<HTMLElement>
-  > {
-  Header: typeof Header;
-  Title: typeof Title;
-  Description: typeof Description;
-  Content: typeof Content;
-  Footer: typeof Footer;
-}
-
-const Card = {
-  ...Base,
-  Header,
-  Title,
-  Description,
-  Content,
-  Footer,
-} as CardComponent;
-
-export { Card, cardVariants };
+export {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+  cardVariants,
+};
