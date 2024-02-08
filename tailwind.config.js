@@ -82,6 +82,7 @@ export default {
         950: "#3f3441",
       },
       night: "#02000C",
+      oxford: "#71717a",
       jaguar: {
         50: "#f0eeff",
         100: "#e0dcff",

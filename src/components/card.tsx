@@ -11,7 +11,19 @@ import {
 } from "../utils/interfaces";
 import { cn } from "../utils/cn";
 
-const cardVariants = cva("", { variants: {}, defaultVariants: {} });
+const cardVariants = cva("p-6 rounded-md", {
+  variants: {
+    shadow: {
+      none: "shadow-[0px_0px_5px_0px_#00000024] border border-oxford",
+      ligth: "shadow-[0px_0px_30px_0px_#00000024]",
+      medium: "shadow-[0px_0px_15px_5px_#00000024]",
+      hard: "shadow-[0px_0px_7px_3px_#00000024]",
+    },
+  },
+  defaultVariants: {
+    shadow: "ligth",
+  },
+});
 
 interface CardHeaderProps extends Header, As<"header"> {}
 interface CardTitleProps extends Title, As<HeadingType> {}
@@ -25,28 +37,34 @@ interface CardProps
     As<"section"> {}
 
 const Header = React.forwardRef<HTMLHeadElement, CardHeaderProps>(
-  ({ as, ...props }, ref) => {
+  ({ as, className, ...props }, ref) => {
     const Component = as || "header";
 
-    return <Component ref={ref} {...props} />;
+    const style = `pb-2`;
+
+    return <Component ref={ref} className={cn(style, className)} {...props} />;
   }
 );
 
 const Title = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
-  ({ as, ...props }, ref) => {
+  ({ as, className, ...props }, ref) => {
     const Component = as || "h1";
 
-    return <Component {...props} ref={ref} />;
+    const style = `text-xl font-bold`;
+
+    return <Component {...props} className={cn(style, className)} ref={ref} />;
   }
 );
 
 const Description = React.forwardRef<
   HTMLParagraphElement,
   CardDescriptionProps
->(({ as, ...props }, ref) => {
+>(({ as, className, ...props }, ref) => {
   const Component = as || "p";
 
-  return <Component {...props} ref={ref} />;
+  const style = `text-oxford text-sm font-light`;
+
+  return <Component {...props} className={cn(style, className)} ref={ref} />;
 });
 
 const Content = React.forwardRef<HTMLElement, CardContentProps>(
@@ -66,12 +84,12 @@ const Footer = React.forwardRef<HTMLElement, CardFooterProps>(
 );
 
 const Base = React.forwardRef<HTMLElement, CardProps>(
-  ({ as, className, ...props }, ref) => {
+  ({ as, className, shadow, ...props }, ref) => {
     const Component = as || "section";
 
     return (
       <Component
-        className={cn(cardVariants({ className }))}
+        className={cn(cardVariants({ className, shadow }))}
         ref={ref}
         {...props}
       />
