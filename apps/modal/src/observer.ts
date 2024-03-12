@@ -1,4 +1,5 @@
-import type { ModalT, ModalOptions, ModalContent } from "./types";
+import type { ElementType } from "react";
+import type { ModalT, ModalOptions } from "./types";
 
 class Observer {
   observers: ((modal: ModalT) => void)[] = [];
@@ -23,7 +24,7 @@ class Observer {
 export const ModalState = new Observer();
 
 const modalFunction = <T = unknown>(
-  content: ModalContent<T>,
+  content: ElementType,
   options?: ModalOptions<T>
 ) => {
   const id = options?.modalId ?? crypto.randomUUID();

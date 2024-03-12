@@ -1,3 +1,5 @@
+import type { ElementType } from "react";
+
 export type Id = string | number;
 
 export type ModalPosition =
@@ -11,13 +13,9 @@ export type ModalPosition =
   | "bottom-center"
   | "bottom-left";
 
-export type ModalContentProps<T = unknown> = {
+export type ModalProps<T = unknown> = {
   closeModal: () => void;
 } & T;
-
-export type ModalContent<T = unknown> =
-  | ((props: ModalContentProps<T>) => React.ReactElement)
-  | React.ReactElement;
 
 export interface ModalOptions<Data = unknown> {
   modalId?: Id;
@@ -28,14 +26,11 @@ export interface ModalOptions<Data = unknown> {
   onOpen?: () => void;
   onClose?: () => void;
   data?: Data;
-  isLoading?: boolean;
   position?: ModalPosition;
 }
 
-export interface ModalProps<T = unknown> extends ModalOptions<T> {}
-
 export interface ModalT {
-  jsx: ModalContent<any>;
+  jsx: ElementType;
   id: Id;
-  options?: Omit<ModalProps, "modalId">;
+  options?: Omit<ModalOptions, "modalId">;
 }
