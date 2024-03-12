@@ -33,6 +33,10 @@ export function Modal(props: Props) {
     }, 500);
     setTimeout(() => {
       setIsVisible(false);
+
+      if (modal.options?.onClose) {
+        modal.options.onClose();
+      }
     }, 800);
     setTimeout(() => {
       closeModal(modal);
@@ -40,7 +44,7 @@ export function Modal(props: Props) {
   }, []);
 
   const render = useCallback(({ jsx, options, id }: ModalT) => {
-    const C: any = jsx;
+    const C = jsx;
 
     const props = options?.data ?? {};
 
@@ -77,6 +81,10 @@ export function Modal(props: Props) {
     if (!$modal || !$modalOverlay) return;
 
     setIsVisible(true);
+
+    if (modal.options?.onOpen) {
+      modal.options.onOpen();
+    }
 
     setTimeout(() => {
       $modal.classList.remove("opacity-0");
