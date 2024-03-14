@@ -3,3 +3,4 @@ export * from "./callout";
 export * from "./card";
 export * from "./badge";
 export * from "./loader";
+export * from "./modal";

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { ModalT } from "./types";
+import { ModalT } from "./types";
 
 interface Props {
   modal: ModalT;
@@ -41,15 +41,18 @@ export function Modal(props: Props) {
     setTimeout(() => {
       closeModal(modal);
     }, 900);
-  }, []);
+  }, [closeModal, modal]);
 
-  const render = useCallback(({ jsx, options, id }: ModalT) => {
-    const C = jsx;
+  const render = useCallback(
+    ({ jsx, options, id }: ModalT) => {
+      const C = jsx;
 
-    const props = options?.data ?? {};
+      const props = options?.data ?? {};
 
-    return <C closeModal={handleClose} {...props} key={id} />;
-  }, []);
+      return <C closeModal={handleClose} {...props} key={id} />;
+    },
+    [handleClose]
+  );
 
   useEffect(() => {
     document.addEventListener(
@@ -89,7 +92,7 @@ export function Modal(props: Props) {
     setTimeout(() => {
       $modal.classList.remove("opacity-0");
     }, 300);
-  }, []);
+  }, [modal.options]);
 
   const classes = useMemo(() => {
     const overlayClasses = classNames?.overlay?.split(" ") ?? [];

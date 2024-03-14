@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import type { ModalT } from "./types";
+import { Modal } from "./modal";
 import { ModalState } from "./observer";
-import { Modal } from "./Modal";
+import { ModalT } from "./types";
 
 export function ModalContainer() {
   const [modals, setModals] = useState<ModalT[]>([]);
